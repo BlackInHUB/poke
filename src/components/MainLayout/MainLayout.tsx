@@ -18,6 +18,10 @@ export const MainLayout = () => {
   const handleSearchSubmit = () => {
     const pokemonName = searchQuery.toLowerCase().trim();
 
+    if (pokemonName.length < 3) {
+      return toast.warning('Name must contain at least 3 letters');
+    }
+
     setLoading(true);
     pokeService
       .getPokeDetails(pokemonName)
