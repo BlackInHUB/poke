@@ -11,4 +11,8 @@ export const HeaderContainer = styled.header`
   padding: 16px;
   background-color: ${({ theme }) => theme.colors.medium};
   box-shadow: ${({ theme }) => theme.shadow.s};
+
+  @media (min-width: 1600px) {
+    width: 1440px;
+  }
 `;
