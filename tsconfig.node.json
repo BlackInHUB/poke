@@ -1,3 +1,39 @@
+// {
+//   "compilerOptions": {
+//     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+//     "target": "ES2022",
+//     "lib": ["ES2023"],
+//     "module": "ESNext",
+//     "skipLibCheck": true,
+
+//     /* Bundler mode */
+//     "moduleResolution": "bundler",
+//     "allowImportingTsExtensions": true,
+//     "isolatedModules": true,
+//     "moduleDetection": "force",
+//     "noEmit": true,
+
+//     /* Linting */
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noUncheckedSideEffectImports": true,
+//     "baseUrl": "./",
+//     "paths": {
+//       "@assets/*": ["./assets/*"],
+//       "@ui/*": ["./components/ui/*"],
+//       "@components/*": ["./components/*"],
+//       "@constants": ["./lib/constants"],
+//       "@lib": ["./lib"],
+//       "@routes": ["./lib/routes"],
+//       "@types": ["./lib/types"],
+//       "@utils": ["./lib/utils"],
+//       "@keys": ["./lib/keys"]
+//     },
+//     "include": ["vite.config.ts"]
+//   }
+// }
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
@@ -5,32 +41,16 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "baseUrl": "./",
-    "paths": {
-      "@assets/*": ["./assets/*"],
-      "@ui/*": ["./components/ui/*"],
-      "@components/*": ["./components/*"],
-      "@constants": ["./lib/constants"],
-      "@lib": ["./lib"],
-      "@routes": ["./lib/routes"],
-      "@types": ["./lib/types"],
-      "@utils": ["./lib/utils"],
-      "@keys": ["./lib/keys"]
-    },
-    "include": ["vite.config.ts"]
-  }
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
 }

@@ -20,27 +20,30 @@ const PokemonDetailsPage = () => {
       .getPokeDetails(name as string)
       .then(response => setCurrentPokemon(response))
       .finally(() => setLoading(false));
-  }, [name, setCurrentPokemon, setLoading]);
+  }, [name]);
 
   const handleGoBack = () => {
+    setCurrentPokemon(null);
     navigate('/pokemons');
   };
 
   return (
-    <>
-      {currentPokemon && <PokemonDetails pokemon={currentPokemon} />}
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button
-          width="fit-content"
-          handleClick={handleGoBack}
-          Icon={RiArrowGoBackLine}
-          iconLeft={true}
-          variant="light"
-        >
-          Back to list
-        </Button>
-      </div>
-    </>
+    currentPokemon && (
+      <>
+        <PokemonDetails pokemon={currentPokemon} />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button
+            width="fit-content"
+            handleClick={handleGoBack}
+            Icon={RiArrowGoBackLine}
+            iconLeft={true}
+            variant="light"
+          >
+            Back to list
+          </Button>
+        </div>
+      </>
+    )
   );
 };
 
