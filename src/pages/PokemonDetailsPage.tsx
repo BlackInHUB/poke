@@ -12,6 +12,9 @@ const PokemonDetailsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (currentPokemon && currentPokemon.name === name) {
+      return;
+    }
     setLoading(true);
     pokeService
       .getPokeDetails(name as string)

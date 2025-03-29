@@ -3,7 +3,8 @@ import { Btn } from './Button.styled';
 import StyledIcon from '../StyledIcon/StyledIcon';
 
 type ButtonProps = {
-  variant: 'dark' | 'light';
+  type?: 'button' | 'submit';
+  variant: 'dark' | 'light' | 'icon';
   handleClick?: () => void;
   children?: React.ReactNode;
   Icon?: React.ElementType;
@@ -11,10 +12,12 @@ type ButtonProps = {
   iconH?: string;
   fontSize?: string;
   iconLeft?: boolean;
+  iconFill?: string;
   width?: string;
 };
 
 export const Button = ({
+  type = 'button',
   fontSize,
   Icon,
   iconH,
@@ -23,10 +26,18 @@ export const Button = ({
   variant,
   handleClick,
   iconLeft = false,
+  iconFill,
   width = '100%',
 }: ButtonProps) => {
   return (
-    <Btn onClick={handleClick} $variant={variant} $fontSize={fontSize} $width={width}>
+    <Btn
+      type={type}
+      $iconFill={iconFill}
+      onClick={handleClick}
+      $variant={variant}
+      $fontSize={fontSize}
+      $width={width}
+    >
       {Icon && iconLeft && <StyledIcon Icon={Icon} width={iconW} height={iconH} />}
       {children}
       {Icon && !iconLeft && <StyledIcon Icon={Icon} width={iconW} height={iconH} />}

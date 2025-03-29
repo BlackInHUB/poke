@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const LayoutContainer = styled.div`
+  position: relative;
   max-width: 95%;
   background-color: ${({ theme }) => theme.colors.white};
   margin: 0 auto;
