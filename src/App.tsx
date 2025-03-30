@@ -4,7 +4,7 @@ import { DETAILS_ROUTE, HOME_ROUTE, POKEMONS_ROUTE } from './lib/routes';
 import { MainLayout } from './components/MainLayout';
 import { lazy, Suspense, useState } from 'react';
 import { PokemonDetailsType, PokemonType } from './lib/types';
-import Loader from './ui/Loader/Loader';
+import { Loader } from './components/ui/Loader';
 import { Bounce, ToastContainer } from 'react-toastify';
 import { AppContext } from './context/appContext/appContext';
 

@@ -14,7 +14,7 @@ export const Btn = styled.button<BtnProps>`
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: ${props => (props.$variant === 'icon' ? '5px' : '16px')};
+  padding: ${props => (props.$variant === 'icon' ? '5px' : '12px 16px')};
   border-radius: ${({ theme }) => theme.radii.m};
   background-color: ${props =>
     props.$variant === 'icon' ? 'transparent' : props.theme.colors.medium};

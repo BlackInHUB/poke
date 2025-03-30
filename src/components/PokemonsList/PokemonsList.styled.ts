@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+export const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const ListTitle = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.h3};
+  font-weight: ${({ theme }) => theme.fontWeights.m};
+  text-align: center;
+  line-height: 1;
+  /* margin-bottom: 24px; */
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -30,4 +45,12 @@ export const ListItemName = styled.p`
   &::first-letter {
     text-transform: uppercase;
   }
+`;
+
+export const ToTopBtnWrapper = styled.div`
+  width: fit-content;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 12;
 `;

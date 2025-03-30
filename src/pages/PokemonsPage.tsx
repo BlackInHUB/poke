@@ -1,12 +1,27 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { PokemonsList } from '../components/PokemonsList';
 import { AppContext } from '../context/appContext/appContext';
 import pokeService from '../services/pokeService';
+import { DropItemType } from '../components/ui/Dropdown';
+import { useScrollPosition } from '../hooks/useScrollPosition';
+import { PokemonType } from '../lib/types';
+
+const sortQueries: DropItemType[] = [
+  { text: 'A-z', query: 'A-z' },
+  { text: 'Z-a', query: 'Z-a' },
+];
 
 const PokemonsPage = () => {
   const { setLoading, pokemonsData, setPokemonsData, page, setPage } = useContext(AppContext);
   const { count, pokemons } = pokemonsData;
   const limit = 100;
+  const [dropOpen, setDropOpen] = useState(false);
+  const [sortQuery, setSortQuery] = useState<DropItemType>({ text: '', query: null });
+
+  useScrollPosition();
+
+  const compareNames = (a: PokemonType, b: PokemonType) =>
+    sortQuery.query === 'A-z' ? b.name.localeCompare(a.name) : a.name.localeCompare(b.name);
 
   useEffect(() => {
     if (
@@ -25,34 +40,44 @@ const PokemonsPage = () => {
       .then(response => {
         if (response && response.results.length) {
           setPokemonsData(prev => {
-            return { pokemons: [...prev.pokemons, ...response.results], count: response.count };
+            return {
+              pokemons: [...prev.pokemons, ...response.results],
+              count: response.count,
+            };
           });
         }
       })
       .finally(() => setLoading(false));
   }, [page]);
 
-  useEffect(() => {
-    const position = localStorage.getItem('position');
+  const toggleDrop = () => {
+    setDropOpen(prev => !prev);
+  };
 
-    if (position) {
-      window.scrollTo({
-        top: +position,
-      });
-    }
-  }, []);
+  const handleSortSelect = (i: number) => {
+    setSortQuery(sortQueries[i]);
 
-  useEffect(() => {
-    const handleScrollPosition = () => {
-      const position = window.pageYOffset;
-      localStorage.setItem('position', JSON.stringify(position));
-    };
+    setPokemonsData(prev => {
+      return {
+        ...prev,
+        pokemons: prev.pokemons.sort(compareNames),
+      };
+    });
+  };
 
-    window.addEventListener('scroll', handleScrollPosition, { passive: true });
-    return () => window.removeEventListener('scroll', handleScrollPosition);
-  }, []);
-
-  return <PokemonsList setPage={setPage} pokemons={pokemons} />;
+  return (
+    <PokemonsList
+      items={sortQueries}
+      onDropClick={toggleDrop}
+      onItemClick={handleSortSelect}
+      isOpen={dropOpen}
+      onClose={() => setDropOpen(false)}
+      selected={sortQuery}
+      setPage={setPage}
+      pokemons={pokemons}
+      page={page}
+    />
+  );
 };
 
 export default PokemonsPage;

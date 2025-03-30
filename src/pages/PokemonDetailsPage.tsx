@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import pokeService from '../services/pokeService';
 import { AppContext } from '../context/appContext/appContext';
 import { PokemonDetails } from '../components/PokemonDetails';
-import { Button } from '../ui/Button';
+import { Button } from '../components/ui/Button';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 
 const PokemonDetailsPage = () => {

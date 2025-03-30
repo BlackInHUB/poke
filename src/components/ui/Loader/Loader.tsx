@@ -1,10 +1,10 @@
-import theme from '../../utils/theme';
+import theme from '../../../utils/theme';
 import StyledIcon from '../StyledIcon/StyledIcon';
 import { LoaderBackdrop, LoaderItem } from './Loader.styled';
 // import { MdCatchingPokemon } from 'react-icons/md';
 import { MdOutlineCatchingPokemon } from 'react-icons/md';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <LoaderBackdrop>
       <LoaderItem>
@@ -18,5 +18,3 @@ const Loader = () => {
     </LoaderBackdrop>
   );
 };
-
-export default Loader;

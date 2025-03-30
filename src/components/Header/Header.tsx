@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import Search from '../../ui/Search/Search';
+import { Search } from '../ui/Search';
 import { Logo } from '../Logo';
 import { HeaderContainer } from './Header.styled';
 
